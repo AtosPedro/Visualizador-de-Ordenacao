@@ -194,16 +194,20 @@ namespace Pratica5
             }
             while (esq < k)
                 v[i++] = temp[esq++];
+
+
         }
-        public static void MergeSort(int[] v, int i, int j)
+        public static void MergeSort(int[] v, int i, int j, Panel p)
         {
             if (i < j)
             {
                 int m = (i + j) / 2;
-                MergeSort(v, i, m);
-                MergeSort(v, m + 1, j);
+                MergeSort(v, i, m, p);
+                MergeSort(v, m + 1, j, p);
                 merge(v, i, m, j); // intercala v[i..m] e v[m+1..j] em v[i..j] 
             }
+            p.Invalidate(); // redesenha o painel
+            Thread.Sleep(8); // espera 8 milisegundos
         }
     }
 }

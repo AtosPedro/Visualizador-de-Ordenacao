@@ -45,9 +45,6 @@ namespace Pratica5
                 cont_t++;
             }
         }
-
-
-
         public static void Insercao(int[] vet)
         {
             int temp, i, j;
@@ -63,7 +60,6 @@ namespace Pratica5
                 vet[j + 1] = temp;
             }
         }
-
         public static void shellSort(int[] vet)
         {
             int i, j, x, n;

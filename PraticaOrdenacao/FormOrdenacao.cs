@@ -84,35 +84,27 @@ namespace Pratica5
         private void seleçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             iniciaAnimacao(() => OrdenacaoGrafica.Selecao(vet, panel));
-
         }
-
-
         private void inserçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             iniciaAnimacao(() => OrdenacaoGrafica.Insercao(vet, panel));
         }
-
         private void shellsortToolStripMenuItem_Click(object sender, EventArgs e)
         {
             iniciaAnimacao(() => OrdenacaoGrafica.ShellSort(vet, panel));
         }
-
         private void heapsortToolStripMenuItem_Click(object sender, EventArgs e)
         {
             iniciaAnimacao(() => OrdenacaoGrafica.HeapSort(vet, panel));
         }
-
         private void quicksortToolStripMenuItem_Click(object sender, EventArgs e)
         {
             iniciaAnimacao(() => OrdenacaoGrafica.QuickSort(vet, 0, vet.Length - 1, panel));
         }
-
         private void mergesortToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //iniciaAnimacao(() => OrdenacaoGrafica.MergeSort(vet, 0, vet.Length - 1, panel));
+            iniciaAnimacao(() => OrdenacaoGrafica.MergeSort(vet, 0, vet.Length - 1, panel));
         }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
