@@ -49,6 +49,10 @@
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.crescenteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.descrescenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aleatóriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crescenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decescenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aleatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,10 +63,6 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.ordemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.crescenteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.descrescenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aleatóriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,8 +80,8 @@
             this.algoritmoToolStripMenuItem,
             this.estatísticasToolStripMenuItem,
             this.ajudaToolStripMenuItem,
-            this.ordemToolStripMenuItem,
-            this.ordemToolStripMenuItem1});
+            this.ordemToolStripMenuItem1,
+            this.ordemToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(524, 24);
@@ -234,6 +234,37 @@
             this.ordemToolStripMenuItem.Name = "ordemToolStripMenuItem";
             this.ordemToolStripMenuItem.Size = new System.Drawing.Size(12, 20);
             // 
+            // ordemToolStripMenuItem1
+            // 
+            this.ordemToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crescenteToolStripMenuItem1,
+            this.descrescenteToolStripMenuItem,
+            this.aleatóriaToolStripMenuItem});
+            this.ordemToolStripMenuItem1.Name = "ordemToolStripMenuItem1";
+            this.ordemToolStripMenuItem1.Size = new System.Drawing.Size(56, 20);
+            this.ordemToolStripMenuItem1.Text = "Ordem";
+            // 
+            // crescenteToolStripMenuItem1
+            // 
+            this.crescenteToolStripMenuItem1.Name = "crescenteToolStripMenuItem1";
+            this.crescenteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.crescenteToolStripMenuItem1.Text = "Crescente";
+            this.crescenteToolStripMenuItem1.Click += new System.EventHandler(this.crescenteToolStripMenuItem1_Click);
+            // 
+            // descrescenteToolStripMenuItem
+            // 
+            this.descrescenteToolStripMenuItem.Name = "descrescenteToolStripMenuItem";
+            this.descrescenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.descrescenteToolStripMenuItem.Text = "Descrescente";
+            this.descrescenteToolStripMenuItem.Click += new System.EventHandler(this.descrescenteToolStripMenuItem_Click);
+            // 
+            // aleatóriaToolStripMenuItem
+            // 
+            this.aleatóriaToolStripMenuItem.Name = "aleatóriaToolStripMenuItem";
+            this.aleatóriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aleatóriaToolStripMenuItem.Text = "Aleatória";
+            this.aleatóriaToolStripMenuItem.Click += new System.EventHandler(this.aleatóriaToolStripMenuItem_Click);
+            // 
             // crescenteToolStripMenuItem
             // 
             this.crescenteToolStripMenuItem.Name = "crescenteToolStripMenuItem";
@@ -318,37 +349,6 @@
             this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Tamanho do Vetor:";
-            // 
-            // ordemToolStripMenuItem1
-            // 
-            this.ordemToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crescenteToolStripMenuItem1,
-            this.descrescenteToolStripMenuItem,
-            this.aleatóriaToolStripMenuItem});
-            this.ordemToolStripMenuItem1.Name = "ordemToolStripMenuItem1";
-            this.ordemToolStripMenuItem1.Size = new System.Drawing.Size(56, 20);
-            this.ordemToolStripMenuItem1.Text = "Ordem";
-            // 
-            // crescenteToolStripMenuItem1
-            // 
-            this.crescenteToolStripMenuItem1.Name = "crescenteToolStripMenuItem1";
-            this.crescenteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.crescenteToolStripMenuItem1.Text = "Crescente";
-            this.crescenteToolStripMenuItem1.Click += new System.EventHandler(this.crescenteToolStripMenuItem1_Click);
-            // 
-            // descrescenteToolStripMenuItem
-            // 
-            this.descrescenteToolStripMenuItem.Name = "descrescenteToolStripMenuItem";
-            this.descrescenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.descrescenteToolStripMenuItem.Text = "Descrescente";
-            this.descrescenteToolStripMenuItem.Click += new System.EventHandler(this.descrescenteToolStripMenuItem_Click);
-            // 
-            // aleatóriaToolStripMenuItem
-            // 
-            this.aleatóriaToolStripMenuItem.Name = "aleatóriaToolStripMenuItem";
-            this.aleatóriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aleatóriaToolStripMenuItem.Text = "Aleatória";
-            this.aleatóriaToolStripMenuItem.Click += new System.EventHandler(this.aleatóriaToolStripMenuItem_Click);
             // 
             // FormOrdenacao
             // 

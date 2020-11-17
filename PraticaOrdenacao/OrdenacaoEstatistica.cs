@@ -9,6 +9,8 @@ namespace Pratica5
         public static int cont_c, cont_t;
         public static void Bolha(int[] vet)
         {
+            cont_c = 0;
+            cont_t = 0;
             int i, j, temp;
             for (i = 0; i < vet.Length - 1; i++)
             {
@@ -27,6 +29,8 @@ namespace Pratica5
         }
         public static void Selecao(int[] vet)
         {
+            cont_c = 0;
+            cont_t = 0;
             int i, j, min, temp;
             for (i = 0; i < vet.Length - 1; i++)
             {
@@ -47,6 +51,8 @@ namespace Pratica5
         }
         public static void Insercao(int[] vet)
         {
+            cont_c = 0;
+            cont_t = 0;
             int temp, i, j;
             for (i = 1; i < vet.Length; i++)
             {
@@ -97,30 +103,41 @@ namespace Pratica5
             j = dir;
             do
             {
-                while (x > vet[i]) i++;
-                while (x < vet[j]) j--;
+
+                while (x > vet[i])  { i++; cont_c++; }
+
+                while (x < vet[j]) { j--; cont_c++; }
+                cont_c++;
                 if (i <= j)
                 {
+                    
                     temp = vet[i];
                     vet[i] = vet[j];
                     vet[j] = temp;
                     i++;
                     j--;
+                    cont_t++;
                 }
+                cont_c++;
             } while (i <= j);
+            cont_c++;
             if (esq < j) quickSort(vet, esq, j);
+            cont_c++;
             if (i < dir) quickSort(vet, i, dir);
         }
 
 
         public static void HeapSort(int[] v)
         {
+            cont_c = 0;
+            cont_t = 0;
+
             constroiMaxHeap(v);
+
             int n = v.Length;
 
             for (int i = v.Length - 1; i > 0; i--)
             {
-
                 troca(v, i, 0);
                 refaz(v, 0, --n);
             }
@@ -146,6 +163,7 @@ namespace Pratica5
                 cont_c++;
                 if (vetor[max] > vetor[pos])
                 {
+
                     troca(vetor, max, pos);
                     refaz(vetor, max, tamanhoDoVetor);
                 }
