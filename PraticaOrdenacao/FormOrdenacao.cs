@@ -196,8 +196,7 @@ namespace Pratica5
                     nomeOrdenacao = "Aleatório";
                     Preenchimento.Aleatorio(vetor, tamanhoVet);
                     break;
-            }
-)
+            } 
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Selecao(vetor);
