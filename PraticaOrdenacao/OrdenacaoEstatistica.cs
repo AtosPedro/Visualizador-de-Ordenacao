@@ -54,8 +54,10 @@ namespace Pratica5
                 j = i - 1;
                 while (j >= 0 && temp < vet[j])
                 {
+                    cont_c++;
                     vet[j + 1] = vet[j];
                     j--;
+                    cont_t++;
                 }
                 vet[j + 1] = temp;
             }

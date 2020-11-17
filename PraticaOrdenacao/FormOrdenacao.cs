@@ -9,6 +9,8 @@ namespace Pratica5
 {
     public partial class FormOrdenacao : Form
     {
+
+
         int[] vet = new int[500]; // vetor interno para a animação
 
         public FormOrdenacao()
@@ -16,6 +18,35 @@ namespace Pratica5
             InitializeComponent();
             panel.Paint += new PaintEventHandler(panel_Paint);
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, panel, new object[] { true });
+        }
+
+        public int TipoOrdenacao = 1;
+        
+        public int DefineTamanho()
+        {
+            if (radioButton1.Checked == true)
+            {
+                return 1000;
+            }
+            else if (radioButton2.Checked == true)
+            {
+                return 10000;
+            }
+            else if (radioButton3.Checked == true)
+            {
+                return 50000;
+            }
+            else if (radioButton4.Checked == true)
+            {
+                return 100000;
+            }
+            else if (radioButton5.Checked == true)
+            {
+                return 500000;
+            }
+            else
+                return 0;
+
         }
 
         private void panel_Paint(object sender, PaintEventArgs e)
@@ -30,8 +61,6 @@ namespace Pratica5
         {
             iniciaAnimacao(() => OrdenacaoGrafica.Bolha(vet, panel));
         }
-
-        // TODO: animação e estatísticas dos demais métodos de ordenação
 
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -105,25 +134,41 @@ namespace Pratica5
         {
             iniciaAnimacao(() => OrdenacaoGrafica.MergeSort(vet, 0, vet.Length - 1, panel));
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
+ 
 
-        }
 
         //BARRA DE ESTÁTISTICAS
         private void bolhaToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
 
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor , tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            }
+
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Bolha(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
+            
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                  "\nOrdenação inicial: TODO" +
+                  $"Tamanho do vetor: {tamanhoVet}" +
+                  $"\nOrdenação inicial: {nomeOrdenacao}" +
                   "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
@@ -133,16 +178,34 @@ namespace Pratica5
         }
         private void seleçãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
+
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor, tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            }
+)
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Selecao(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                 "\nOrdenação inicial: TODO" +
+                  $"Tamanho do vetor: {tamanhoVet}" +
+                 $"\nOrdenação inicial: {nomeOrdenacao}" +
                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
@@ -151,19 +214,35 @@ namespace Pratica5
                   MessageBoxIcon.Information);
         }
 
-
         private void inserçãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
+
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor, tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            }; // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
-            OrdenacaoEstatistica.Selecao(vetor);
+            OrdenacaoEstatistica.Insercao(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                 "\nOrdenação inicial: TODO" +
+                  $"Tamanho do vetor: {tamanhoVet}" +
+                 $"\nOrdenação inicial: {nomeOrdenacao}" +
                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
@@ -174,16 +253,33 @@ namespace Pratica5
 
         private void shellsortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
+
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor, tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            } // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Selecao(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                 "\nOrdenação inicial: TODO" +
+                  $"Tamanho do vetor: {tamanhoVet}" +
+                 $"\nOrdenação inicial: {nomeOrdenacao}" +
                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
@@ -194,16 +290,33 @@ namespace Pratica5
 
         private void heapsortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
+
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor, tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            }// TODO (preenchimento inicial deverá ser escolhido pelo usuário)
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Selecao(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                 "\nOrdenação inicial: TODO" +
+                  $"Tamanho do vetor: {tamanhoVet}" +
+                 $"\nOrdenação inicial: {nomeOrdenacao}" +
                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
@@ -214,16 +327,33 @@ namespace Pratica5
 
         private void quicksortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
+
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor, tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            }// TODO (preenchimento inicial deverá ser escolhido pelo usuário)
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Selecao(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                 "\nOrdenação inicial: TODO" +
+                   $"Tamanho do vetor: {tamanhoVet}" +
+                 $"\nOrdenação inicial: {nomeOrdenacao}"+
                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
@@ -234,22 +364,54 @@ namespace Pratica5
 
         private void mergesortToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            int[] vetor = new int[1000]; // TODO (tamanho deverá ser escolhido pelo usuário)
-            Preenchimento.Aleatorio(vetor, 1000); // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
+            int tamanhoVet = DefineTamanho();
+            int[] vetor = new int[tamanhoVet];
+            string nomeOrdenacao = "";
+
+            switch (TipoOrdenacao)
+            {
+                case 1:
+                    nomeOrdenacao = "Crescente";
+                    Preenchimento.Crescente(vetor, tamanhoVet);
+                    break;
+                case 2:
+                    nomeOrdenacao = "Decrescente";
+                    Preenchimento.Decrescente(vetor, tamanhoVet);
+                    break;
+                case 3:
+                    nomeOrdenacao = "Aleatório";
+                    Preenchimento.Aleatorio(vetor, tamanhoVet);
+                    break;
+            } // TODO (preenchimento inicial deverá ser escolhido pelo usuário)
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
             OrdenacaoEstatistica.Selecao(vetor);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
-                  "Tamanho do vetor: TODO" +
-                 "\nOrdenação inicial: TODO" +
+                  $"Tamanho do vetor: {tamanhoVet}" +
+                 $"\nOrdenação inicial: {nomeOrdenacao}" +
                  "\n\nTempo de execução: " + String.Format("{0:F4} seg", elapsed_time / 1000.0) +
                   "\nNº de comparações: TODO" +
                   "\nNº de trocas: TODO",
                   "Estatísticas do Método MergeSort",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information);
+        }
+
+        private void crescenteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TipoOrdenacao = 1;
+        }
+
+        private void descrescenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TipoOrdenacao = 2;
+        }
+
+        private void aleatóriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TipoOrdenacao = 3;
         }
     }
 }
