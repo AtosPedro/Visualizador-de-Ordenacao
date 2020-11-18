@@ -105,8 +105,6 @@ namespace Pratica5
             {
                 troca(v, i, 0, p);
                 refaz(v, 0, --n, p);
-                p.Invalidate(); // redesenha o painel
-                Thread.Sleep(8); // espera 8 milisegundos
             }
         }
 

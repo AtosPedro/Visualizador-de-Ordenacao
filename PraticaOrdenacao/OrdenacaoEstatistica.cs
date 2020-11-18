@@ -9,8 +9,6 @@ namespace Pratica5
         public static int cont_c, cont_t;
         public static void Bolha(int[] vet)
         {
-            cont_c = 0;
-            cont_t = 0;
             int i, j, temp;
             for (i = 0; i < vet.Length - 1; i++)
             {
@@ -19,18 +17,20 @@ namespace Pratica5
                     cont_c++;
                     if (vet[j] < vet[j - 1])
                     {
+                        cont_t++;
                         temp = vet[j];
                         vet[j] = vet[j - 1];
                         vet[j - 1] = temp;
-                        cont_t++;
                     }
                 }
             }
         }
         public static void Selecao(int[] vet)
         {
-            cont_c = 0;
             cont_t = 0;
+            cont_c = 0;
+
+
             int i, j, min, temp;
             for (i = 0; i < vet.Length - 1; i++)
             {
@@ -43,29 +43,35 @@ namespace Pratica5
                         min = j;
                     }
                 }
+
+                cont_t++;
                 temp = vet[i];
                 vet[i] = vet[min];
                 vet[min] = temp;
-                cont_t++;
+
             }
         }
         public static void Insercao(int[] vet)
         {
-            cont_c = 0;
             cont_t = 0;
+            cont_c = 0;
+
             int temp, i, j;
             for (i = 1; i < vet.Length; i++)
             {
+
                 temp = vet[i];
                 j = i - 1;
                 while (j >= 0 && temp < vet[j])
                 {
-                    cont_c++;
+                    cont_t++;
                     vet[j + 1] = vet[j];
                     j--;
-                    cont_t++;
+                    cont_c++;
                 }
                 vet[j + 1] = temp;
+
+
             }
         }
         public static void shellSort(int[] vet)
@@ -73,9 +79,13 @@ namespace Pratica5
             int i, j, x, n;
             int h = 1;
             n = vet.Length;
+
+            cont_t = 0;
+            cont_c = 0;
             do
             {
                 h = h * 3 + 1;
+                cont_c++;
             } while (h <= n);
             do
             {
@@ -86,12 +96,19 @@ namespace Pratica5
                     j = i;
                     while (j > (h - 1) && vet[j - h] > x)
                     {
+                        cont_c++;
                         vet[j] = vet[j - h];
                         j -= h;
+
                     }
                     vet[j] = x;
+                    cont_t++;
+
                 }
+                cont_c++;
             } while (h != 1);
+
+            cont_c -= 2;
         }
 
         public static void quickSort(int[] vet, int esq, int dir)
@@ -103,27 +120,28 @@ namespace Pratica5
             j = dir;
             do
             {
-
-                while (x > vet[i])  { i++; cont_c++; }
-
+                while (x > vet[i]) { i++; cont_c++; }
                 while (x < vet[j]) { j--; cont_c++; }
-                cont_c++;
+
+
                 if (i <= j)
                 {
-                    
+                    cont_t++;
                     temp = vet[i];
                     vet[i] = vet[j];
                     vet[j] = temp;
                     i++;
                     j--;
-                    cont_t++;
                 }
                 cont_c++;
             } while (i <= j);
+
             cont_c++;
             if (esq < j) quickSort(vet, esq, j);
             cont_c++;
             if (i < dir) quickSort(vet, i, dir);
+
+            cont_c--;
         }
 
 
@@ -154,6 +172,7 @@ namespace Pratica5
         {
 
             int max = 2 * pos + 1, right = max + 1;
+
             cont_c++;
             if (max < tamanhoDoVetor)
             {
@@ -172,10 +191,61 @@ namespace Pratica5
 
         public static void troca(int[] v, int j, int aposJ)
         {
+            cont_t++;
             int aux = v[j];
             v[j] = v[aposJ];
             v[aposJ] = aux;
-            cont_t++;
+
+        }
+
+
+        private static void merge(int[] v, int i, int m, int j)
+        {
+            int[] temp = new int[m - i + 1];
+            int k;
+
+            for (k = i; k <= m; k++)
+            {
+                temp[k - i] = v[k];
+                cont_t++;
+            }
+
+            int esq = 0, dir = m + 1;
+
+            k = m - i + 1;
+
+            while (esq < k && dir <= j)
+            {
+                cont_c++;
+                if (temp[esq] <= v[dir])
+                {
+                    cont_t++;
+                    v[i++] = temp[esq++];
+                }
+                else
+                {
+                    cont_t++;
+                    v[i++] = v[dir++];
+                }
+
+                cont_c++;
+            }
+            while (esq < k)
+            {
+                v[i++] = temp[esq++];
+                cont_c++;
+            }
+        }
+        public static void MergeSort(int[] v, int i, int j)
+        {
+            if (i < j)
+            {
+                int m = (i + j) / 2;
+                MergeSort(v, i, m);
+                MergeSort(v, m + 1, j);
+                merge(v, i, m, j); // intercala v[i..m] e v[m+1..j] em v[i..j] 
+            }
+
         }
 
     }

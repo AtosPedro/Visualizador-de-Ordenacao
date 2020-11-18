@@ -22,7 +22,7 @@ namespace Pratica5
         public static void Decrescente(int[] vet, int limite)
         {
 
-            for (int i = vet.Length; i <= 0; i--)
+            for (int i = vet.Length - 1; i >= 0; i--)
             {
                 vet[i] = i;
             }

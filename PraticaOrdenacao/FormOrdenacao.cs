@@ -11,7 +11,7 @@ namespace Pratica5
     {
 
 
-        int[] vet = new int[500]; // vetor interno para a animação
+        int[] vet = new int[500]; // Vetor interno para a animação
 
         public FormOrdenacao()
         {
@@ -22,7 +22,7 @@ namespace Pratica5
 
         public static int TipoOrdenacao = 1; // Variável resposável pelos tipos de ordenação
         
-        //Metodo resposável por analisar o tipo, preencher o vetor de acordo com tal e retornar o vetor e o nome do tipo de ordenação
+        // Metodo resposável por analisar o tipo, preencher o vetor de acordo com tal e retornar o vetor e o nome do tipo de ordenação
         public int[] PreecheVetTipo(int[] vet, out string nomeOrdenacao, int tamanho)
         {
             nomeOrdenacao = "";
@@ -45,7 +45,7 @@ namespace Pratica5
             return vet;
         }
 
-        // define o tamanho do vetor de acordo com os radiobuttons de tamanho
+        // Define o tamanho do vetor de acordo com os radiobuttons de tamanho
         public int DefineTamanho()
         {
             if (radioButton1.Checked == true)
@@ -157,8 +157,6 @@ namespace Pratica5
         {
             iniciaAnimacao(() => OrdenacaoGrafica.MergeSort(vet, 0, vet.Length - 1, panel));
         }
- 
-
 
         //BARRA DE ESTÁTISTICAS
         private void bolhaToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -315,7 +313,7 @@ namespace Pratica5
 
             var stopwatch = new Stopwatch();
             stopwatch.Start(); // inicia cronômetro
-            OrdenacaoEstatistica.Selecao(vetor);
+            OrdenacaoEstatistica.MergeSort(vetor , 0 , vetor.Length-1);
             stopwatch.Stop(); // interrompe cronômetro
             long elapsed_time = stopwatch.ElapsedMilliseconds; // calcula o tempo decorrido
             MessageBox.Show(this,
@@ -330,20 +328,20 @@ namespace Pratica5
         }
 
         //BARRA DE ORDENAÇÃO
-
         private void crescenteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TipoOrdenacao = 1;
+            MessageBox.Show(this, "Vetor ordenado de forma crescente ", "Ordenação Inicial",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
-
         private void descrescenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TipoOrdenacao = 2;
+            MessageBox.Show(this, "Vetor ordenado de forma decrescente ", "Ordenação Inicial", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void aleatóriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TipoOrdenacao = 3;
+            MessageBox.Show(this, "Vetor ordenado de forma aleatória ", "Ordenação Inicial", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
