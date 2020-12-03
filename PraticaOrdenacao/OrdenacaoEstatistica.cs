@@ -4,8 +4,7 @@ namespace Pratica5
 {
     class OrdenacaoEstatistica
     {
-        // TODO: contador de comparações e trocas
-        // TODO: declarar demais métodos de ordenação
+
         public static int cont_c, cont_t;
         public static void Bolha(int[] vet)
         {
@@ -62,15 +61,14 @@ namespace Pratica5
 
                 temp = vet[i];
                 j = i - 1;
-                while (j >= 0 && temp < vet[j])
-                {
-                    cont_t++;
+                while (j >= 0 && temp < vet[j] && cont_c++ >= 0)
+                {                    
                     vet[j + 1] = vet[j];
                     j--;
-                    cont_c++;
+                    
                 }
                 vet[j + 1] = temp;
-
+                cont_t++;
 
             }
         }
@@ -85,7 +83,7 @@ namespace Pratica5
             do
             {
                 h = h * 3 + 1;
-                cont_c++;
+                
             } while (h <= n);
             do
             {
@@ -96,7 +94,7 @@ namespace Pratica5
                     j = i;
                     while (j > (h - 1) && vet[j - h] > x)
                     {
-                        cont_c++;
+                        cont_c += 2;
                         vet[j] = vet[j - h];
                         j -= h;
 
@@ -105,10 +103,10 @@ namespace Pratica5
                     cont_t++;
 
                 }
-                cont_c++;
+                
             } while (h != 1);
 
-            cont_c -= 2;
+           
         }
 
         public static void quickSort(int[] vet, int esq, int dir)
@@ -123,25 +121,26 @@ namespace Pratica5
                 while (x > vet[i]) { i++; cont_c++; }
                 while (x < vet[j]) { j--; cont_c++; }
 
-
+                cont_c++;
                 if (i <= j)
                 {
-                    cont_t++;
+                    
                     temp = vet[i];
                     vet[i] = vet[j];
                     vet[j] = temp;
                     i++;
                     j--;
+                    cont_t++;
                 }
-                cont_c++;
+                
             } while (i <= j);
 
-            cont_c++;
+            
             if (esq < j) quickSort(vet, esq, j);
-            cont_c++;
+            
             if (i < dir) quickSort(vet, i, dir);
 
-            cont_c--;
+           
         }
 
 
@@ -207,7 +206,7 @@ namespace Pratica5
             for (k = i; k <= m; k++)
             {
                 temp[k - i] = v[k];
-                cont_t++;
+                
             }
 
             int esq = 0, dir = m + 1;
@@ -216,7 +215,7 @@ namespace Pratica5
 
             while (esq < k && dir <= j)
             {
-                cont_c++;
+                cont_c+=3;
                 if (temp[esq] <= v[dir])
                 {
                     cont_t++;
@@ -228,16 +227,18 @@ namespace Pratica5
                     v[i++] = v[dir++];
                 }
 
-                cont_c++;
+                
             }
             while (esq < k)
             {
                 v[i++] = temp[esq++];
-                cont_c++;
+                cont_t++;
+
             }
         }
         public static void MergeSort(int[] v, int i, int j)
         {
+            
             if (i < j)
             {
                 int m = (i + j) / 2;
